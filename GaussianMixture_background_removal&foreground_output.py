@@ -10,14 +10,16 @@ def bg_removal(video_file, video_out):
     ret, frame = cap.read()
 
     while (ret):
-        fgmask = fgbg.apply(frame)
-#        cv2.imshow('frame',fgmask)
+        fgmask = fgbg.apply(frame) #, learningRate=0.001)
+        cv2.namedWindow("Original")
+        cv2.imshow('Original',frame)
         mask_rgb = cv2.cvtColor(fgmask, cv2.COLOR_GRAY2RGB)
         fg = cv2.bitwise_and(frame, mask_rgb)
-        cv2.imshow('frame', fg)
+        cv2.namedWindow("Background Removal")
+        cv2.imshow('Background Removal', fg)
         video_out.write(fg)
 
-        k = cv2.waitKey(30) & 0xff
+        k = cv2.waitKey(1) & 0xff
         if k == 27:
             break
         ret, frame = cap.read()
