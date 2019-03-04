@@ -1,7 +1,6 @@
 import json
 
 if __name__=="__main__":
-    print("God is with me.")
     with open('/Users/touchage/Downloads/tracks.json') as data_file:
         data= json.load(data_file)
 
@@ -56,4 +55,3 @@ if __name__=="__main__":
                     count = count+1
 
     print(count)
-    print("Holy Spirit.")
